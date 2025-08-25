@@ -1,7 +1,7 @@
 // src/router/index.ts
 import { createRouter, createWebHistory } from "vue-router";
-import LoginPage from "@/page/LoginPage.vue";
-import TodoPage from "@/page/TodoPage.vue";
+import LoginPage from "@/page/login/LoginPage.vue";
+import TodoPage from "@/page/todo/TodoPage.vue";
 export const router = createRouter({
   history: createWebHistory(),
   routes: [

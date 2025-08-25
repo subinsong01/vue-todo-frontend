@@ -11,9 +11,9 @@
     </v-form>
   </v-sheet>
 </template>
-<script lang="ts" setup>
-import { postUser } from "@/features/user/api/UserApi";
-import type { UserRequest } from "@/features/user/model/Request";
+
+<script setup>
+import { LoginService } from "./features/LoginService";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -28,17 +28,14 @@ const onSubmit = async () => {
   }
 
   try {
-    const param: UserRequest = {
+    await LoginService.login({
       username: id.value,
       password: password.value,
-    };
-
-    const res = await postUser(param);
-    console.log("로그인 성공", res);
-
+    });
     router.push("/Todo");
   } catch (e) {
     confirm("로그인 실패");
+    console.log("error", e);
   }
 };
 </script>
